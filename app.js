@@ -11,46 +11,97 @@
     let score = document.querySelector("#score");
     let feedback = document.querySelector("#feedback");
 
-
     // Declare global variables
     let questions;
     let timerCount = 10;
     let scoreCount = 0;
     let playerAnswer;
     let correctAnswer;
+    let allAnswers;
 
+    // Put event listeners on buttons
+    answerButtonA.addEventListener("click", function() { checkAnswer(answerButtonA.innerText)});
+    answerButtonB.addEventListener("click", function() { checkAnswer(answerButtonB.innerText)});
+    answerButtonC.addEventListener("click", function() { checkAnswer(answerButtonC.innerText)});
+    answerButtonD.addEventListener("click", function() { checkAnswer(answerButtonD.innerText)});
 
     // Fetch the questions 
     async function getQuestionInformation() {
         let response = await fetch("https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple");
-         let questions = await response.json();
-        console.log(questions);  
-        showQuestion(questions)    
-        // return questions;
-    };
-    getQuestionInformation()
+        questions = await response.json();
+        console.log(questions);
+        setQuestion();
+        getAnswers();
+        setAnswers();          
+    };  
+    
 
     // This function shows the question with the mcq
 
-    function showQuestion(questions) {  
-    let question= document.querySelector("#question");
-    question.innerText= questions.results[2].question;
-    // Gets the correct answer and incorrect answer and store it in a variable
-    correctAnswer = questions.results[0].correct_answer;
-    incorrectAnswer = questions.results[0].incorrect_answers;
+    function setQuestion() {  
+        let question= document.querySelector("#question");
+        question.innerText= questions.results[0].question;
+    };
 
-    // add the correct answer to the incorrect answer array and call it all answers 
-    let allAnswers = incorrectAnswer.push(correctAnswer)
-    console.log(allAnswers)
+    function getAnswers() {
+        // Gets the correct answer and incorrect answer and store it in a variable
+        correctAnswer = questions.results[0].correct_answer;
+        // Get the incorrect answers
+        allAnswers = questions.results[0].incorrect_answers;
+        // add the correct answer to the all answer array and call it all answers 
+        allAnswers.push(correctAnswer);    
+    };
 
-    let randomnum = Math.floor(Math.random()*allAnswers.length);
-     console.log(randomnum)
-// Display each of the answers to the button
-    //allAnswers.forEach(allAnswers => {
-    //const button = document.querySelector('button')
-    //button.innerText = allAnswers[1].text
+    function setAnswers() {
+        // generate randomnum between 0 and 3
+        let randomnum = Math.floor(Math.random()*allAnswers.length);
+        answerButtonA.innerText = allAnswers[randomnum];
+        // remove the array item at index equal to random num
+        allAnswers.splice(randomnum, 1);
 
-    }
+        // generate randomnum between 0 and 2
+        randomnum = Math.floor(Math.random()*allAnswers.length);
+        answerButtonB.innerText = allAnswers[randomnum];
+        // remove the array item at index equal to random num
+        allAnswers.splice(randomnum, 1);
+
+        // generate randomnum between 0 and 1
+        randomnum = Math.floor(Math.random()*allAnswers.length);
+        answerButtonC.innerText = allAnswers[randomnum];
+        // remove the array item at index equal to random num
+        allAnswers.splice(randomnum, 1);
+
+        // answerArray lenght will now equal 0 - 1 item left in the array      
+        answerButtonD.innerText = allAnswers[0];
+        // remove the array item at index equal to random num
+        allAnswers.splice(randomnum, 1);
+    };
+
+    // takes the answer parameter from the button click event and passes it in
+    // as an argument 
+        // checks if the answer clicked on is true or false
+
+    function checkAnswer(answer) {
+        if (answer === correctAnswer) {
+            console.log(true);
+        } else {
+            console.log(false);
+        }
+     };
+
+    getQuestionInformation()
+
+    
+     
+
+
+
+     // // Display each of the answers to the button
+//     allAnswers.forEach(allAnswers => {
+//     const button = document.querySelector('button')
+//     button.innerText = allAnswers[1].text
+
+//     });
 
     /*
 // We have some code that works 
