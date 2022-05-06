@@ -36,6 +36,21 @@
     question.innerText= questions.results[0].question;
     // Gets the correct answer and store it in a variable
     correctAnswer = questions.results[0].correct_answer;
+    
+// Get the incorrect answers and store them in an array 
+incorrectAnswer = questions.results[0].incorrect_answers;
+
+// add the correct answer to the incorrect answer array and call it all answers 
+
+let allAnswers = incorrectAnswer.push(correctAnswer)
+console.log(allAnswers)
+
+// Randomly assign the answers to the button
+// Randomly generates a number between 0 and 3
+let randomnum = Math.floor(Math.random()*allAnswers.length);
+console.log(randomnum)
+// Display each of the answers to the button
+
   });
 
 // Put event listeners on each button
