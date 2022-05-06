@@ -18,7 +18,7 @@
     let playerAnswer;
     let correctAnswer;
     let allAnswers;
-    let questionCount = 0;
+    let questionCount = 1;
     // Put event listeners on buttons
     answerButtonA.addEventListener("click", function() { checkAnswer(answerButtonA.innerText)});
     answerButtonB.addEventListener("click", function() { checkAnswer(answerButtonB.innerText)});
@@ -105,7 +105,9 @@
     //add eventlistener to that so that when it is clicked it runs new function - generate next question
     function nextQuestion(){
         questionCount++;
+        if (questionCount<=5) {
         setQuestion();
+        difficulty.innerText= "Question number: " + questionCount;
         getAnswers();
         setAnswers();
         answerButtonA.disabled = false;
@@ -113,9 +115,14 @@
         answerButtonC.disabled = false;
         answerButtonD.disabled = false;
         feedback.innerText = "";
+        }
+        else { alert(" This is the end of the Quiz! You have scored: " + scoreCount + " points")}
+        
+        
     }
 
     
+
     
      
 
