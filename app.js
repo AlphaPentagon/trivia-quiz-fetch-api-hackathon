@@ -19,16 +19,40 @@
     let playerAnswer;
     let correctAnswer;
 
-    
 
     // Fetch the questions 
     async function getQuestionInformation() {
         let response = await fetch("https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple");
-         questions = await response.json();
-        console.log(questions);        
-        return questions;
+         let questions = await response.json();
+        console.log(questions);  
+        showQuestion(questions)    
+        // return questions;
     };
+    getQuestionInformation()
 
+    // This function shows the question with the mcq
+
+    function showQuestion(questions) {  
+    let question= document.querySelector("#question");
+    question.innerText= questions.results[2].question;
+    // Gets the correct answer and incorrect answer and store it in a variable
+    correctAnswer = questions.results[0].correct_answer;
+    incorrectAnswer = questions.results[0].incorrect_answers;
+
+    // add the correct answer to the incorrect answer array and call it all answers 
+    let allAnswers = incorrectAnswer.push(correctAnswer)
+    console.log(allAnswers)
+
+    let randomnum = Math.floor(Math.random()*allAnswers.length);
+     console.log(randomnum)
+// Display each of the answers to the button
+    //allAnswers.forEach(allAnswers => {
+    //const button = document.querySelector('button')
+    //button.innerText = allAnswers[1].text
+
+    }
+
+    /*
 // We have some code that works 
     // displays the question on the page
    getQuestionInformation().then( questions => {   
@@ -50,7 +74,10 @@ console.log(allAnswers)
 let randomnum = Math.floor(Math.random()*allAnswers.length);
 console.log(randomnum)
 // Display each of the answers to the button
-
+questions.results[0].allAnswers.forEach(answer => {
+    const button = document.createElement('button')
+    button.innerText = answer.text
+    // button.classList.add('btn')
   });
 
 // Put event listeners on each button
@@ -76,4 +103,6 @@ answerButtonA.addEventListener("click", function() { checkAnswer("A")});
 
 
     
-    
+   })
+
+   */
