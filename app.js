@@ -40,7 +40,7 @@
 
     function setQuestion() {  
         let question= document.querySelector("#question");
-        question.innerText= questions.results[questionCount].question;
+        question.innerHTML= questions.results[questionCount].question;
     };
 
     function getAnswers() {
@@ -55,24 +55,24 @@
     function setAnswers() {
         // generate randomnum between 0 and 3
         let randomnum = Math.floor(Math.random()*allAnswers.length);
-        answerButtonA.innerText = allAnswers[randomnum];
+        answerButtonA.innerHTML = allAnswers[randomnum];
         // remove the array item at index equal to random num
         allAnswers.splice(randomnum, 1);
 
         // generate randomnum between 0 and 2
         randomnum = Math.floor(Math.random()*allAnswers.length);
-        answerButtonB.innerText = allAnswers[randomnum];
+        answerButtonB.innerHTML = allAnswers[randomnum];
         // remove the array item at index equal to random num
         allAnswers.splice(randomnum, 1);
 
         // generate randomnum between 0 and 1
         randomnum = Math.floor(Math.random()*allAnswers.length);
-        answerButtonC.innerText = allAnswers[randomnum];
+        answerButtonC.innerHTML = allAnswers[randomnum];
         // remove the array item at index equal to random num
         allAnswers.splice(randomnum, 1);
 
         // answerArray lenght will now equal 0 - 1 item left in the array      
-        answerButtonD.innerText = allAnswers[0];
+        answerButtonD.innerHTML = allAnswers[0];
         // remove the array item at index equal to random num
         allAnswers.splice(randomnum, 1);
     };
@@ -82,10 +82,18 @@
         // checks if the answer clicked on is true or false
 
     function checkAnswer(answer) {
+        answerButtonA.disabled = true;
+        answerButtonB.disabled = true;
+        answerButtonC.disabled = true;
+        answerButtonD.disabled = true;
         if (answer === correctAnswer) {
             console.log(true);
+            scoreCount++;
+            score.innerText = "Score: " + scoreCount;
+            feedback.innerText = "Correct answer";
         } else {
             console.log(false);
+            feedback.innerText = "Wrong answer";
         }
      };
 
@@ -100,6 +108,11 @@
         setQuestion();
         getAnswers();
         setAnswers();
+        answerButtonA.disabled = false;
+        answerButtonB.disabled = false;
+        answerButtonC.disabled = false;
+        answerButtonD.disabled = false;
+        feedback.innerText = "";
     }
 
     
