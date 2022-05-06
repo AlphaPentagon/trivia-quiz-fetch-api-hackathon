@@ -10,7 +10,7 @@
     let answerButtonD = document.querySelector("#answerD");
     let score = document.querySelector("#score");
     let feedback = document.querySelector("#feedback");
-
+    let continueButton = document.querySelector("#continue");
     // Declare global variables
     let questions;
     let timerCount = 10;
@@ -18,13 +18,13 @@
     let playerAnswer;
     let correctAnswer;
     let allAnswers;
-
+    let questionCount = 0;
     // Put event listeners on buttons
     answerButtonA.addEventListener("click", function() { checkAnswer(answerButtonA.innerText)});
     answerButtonB.addEventListener("click", function() { checkAnswer(answerButtonB.innerText)});
     answerButtonC.addEventListener("click", function() { checkAnswer(answerButtonC.innerText)});
     answerButtonD.addEventListener("click", function() { checkAnswer(answerButtonD.innerText)});
-
+    continueButton.addEventListener("click", function() { nextQuestion()});
     // Fetch the questions 
     async function getQuestionInformation() {
         let response = await fetch("https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple");
@@ -40,14 +40,14 @@
 
     function setQuestion() {  
         let question= document.querySelector("#question");
-        question.innerText= questions.results[0].question;
+        question.innerText= questions.results[questionCount].question;
     };
 
     function getAnswers() {
         // Gets the correct answer and incorrect answer and store it in a variable
-        correctAnswer = questions.results[0].correct_answer;
+        correctAnswer = questions.results[questionCount].correct_answer;
         // Get the incorrect answers
-        allAnswers = questions.results[0].incorrect_answers;
+        allAnswers = questions.results[questionCount].incorrect_answers;
         // add the correct answer to the all answer array and call it all answers 
         allAnswers.push(correctAnswer);    
     };
@@ -91,6 +91,18 @@
 
     getQuestionInformation()
 
+    //After question is answered, generate next question
+    //button (next question)
+    //selct button and save into variable
+    //add eventlistener to that so that when it is clicked it runs new function - generate next question
+    function nextQuestion(){
+        questionCount++;
+        setQuestion();
+        getAnswers();
+        setAnswers();
+    }
+
+    
     
      
 
