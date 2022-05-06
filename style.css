@@ -4,7 +4,7 @@ body, #top #bottom {
     align-items: center;
     justify-content: center;
     font-family:Arial, Helvetica, sans-serif;
-    background-color: #20cba9; 
+    background-color: #68cfff; 
   color: rgb(234, 20, 166);
   font-family: 'Poppins', sans-serif;
   text-align: center;
@@ -16,22 +16,27 @@ header, #middle {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 * {
     padding: 10px;
     font-size: 20px;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 h1 {
     font-size: 40px;
     text-decoration: underline;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 #question {
-    font-style: italic;
+    
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 header {
     margin-bottom: 0px;
+    font-family:Arial, Helvetica, sans-serif;
 }
