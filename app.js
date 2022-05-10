@@ -5,7 +5,7 @@
     let question= document.querySelector("#question");
     let title = document.querySelector("#title");
     let timer = document.querySelector("#timer");
-    let difficulty = document.querySelector("#difficulty");
+    let questionNumber = document.querySelector("#question-number");
     let answerButtonA = document.querySelector("#answerA");
     let answerButtonB = document.querySelector("#answerB");
     let answerButtonC = document.querySelector("#answerC");
@@ -21,6 +21,7 @@
     let correctAnswer;
     let allAnswers;
     let questionCount = 1;
+    let questionIndex = 0;
     // Put event listeners on buttons
     answerButtonA.addEventListener("click", function() { checkAnswer(answerButtonA.innerText)});
     answerButtonB.addEventListener("click", function() { checkAnswer(answerButtonB.innerText)});
@@ -29,7 +30,7 @@
     continueButton.addEventListener("click", function() { nextQuestion()});
     // Fetch the questions 
     async function getQuestionInformation() {
-        let response = await fetch("https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple");
+        let response = await fetch("https://opentdb.com/api.php?amount=10&category=11&type=multiple");
         questions = await response.json();
         console.log(questions);
         setQuestion();
@@ -42,14 +43,14 @@
 
     function setQuestion() {  
         let question= document.querySelector("#question");
-        question.innerHTML= questions.results[questionCount].question;
+        question.innerHTML= questions.results[questionIndex].question;
     };
 
     function getAnswers() {
         // Gets the correct answer and incorrect answer and store it in a variable
-        correctAnswer = questions.results[questionCount].correct_answer;
+        correctAnswer = questions.results[questionIndex].correct_answer;
         // Get the incorrect answers
-        allAnswers = questions.results[questionCount].incorrect_answers;
+        allAnswers = questions.results[questionIndex].incorrect_answers;
         // add the correct answer to the all answer array and call it all answers 
         allAnswers.push(correctAnswer);    
     };
@@ -107,87 +108,25 @@
     //add eventlistener to that so that when it is clicked it runs new function - generate next question
     function nextQuestion(){
         questionCount++;
-        if (questionCount<=5) {
-        setQuestion();
-        difficulty.innerText= "Question number: " + questionCount;
-        getAnswers();
-        setAnswers();
-        answerButtonA.disabled = false;
-        answerButtonB.disabled = false;
-        answerButtonC.disabled = false;
-        answerButtonD.disabled = false;
-        feedback.innerText = "";
-        }
-        else { alert(" This is the end of the Quiz! You have scored: " + scoreCount + " points")}
+        questionIndex++;
+        if (questionIndex < 10) {
+            setQuestion();
+            questionNumber.innerText= "Question number: " + questionCount;
+            getAnswers();
+            setAnswers();
+            answerButtonA.disabled = false;
+            answerButtonB.disabled = false;
+            answerButtonC.disabled = false;
+            answerButtonD.disabled = false;
+            feedback.innerText = "";
+        } else { 
+            feedback.innerText = " This is the end of the Quiz! You have scored: " + scoreCount + " points"
+        }       
         
-        
-    }
+    };
 
     
 
     
      
 
-
-
-     // // Display each of the answers to the button
-//     allAnswers.forEach(allAnswers => {
-//     const button = document.querySelector('button')
-//     button.innerText = allAnswers[1].text
-
-//     });
-
-    /*
-// We have some code that works 
-    // displays the question on the page
-   getQuestionInformation().then( questions => {   
-    // Set the inner Text to be the current question    
-    question.innerText= questions.results[0].question;
-    // Gets the correct answer and store it in a variable
-    correctAnswer = questions.results[0].correct_answer;
-    
-// Get the incorrect answers and store them in an array 
-incorrectAnswer = questions.results[0].incorrect_answers;
-
-// add the correct answer to the incorrect answer array and call it all answers 
-
-let allAnswers = incorrectAnswer.push(correctAnswer)
-console.log(allAnswers)
-
-// Randomly assign the answers to the button
-// Randomly generates a number between 0 and 3
-let randomnum = Math.floor(Math.random()*allAnswers.length);
-console.log(randomnum)
-// Display each of the answers to the button
-questions.results[0].allAnswers.forEach(answer => {
-    const button = document.createElement('button')
-    button.innerText = answer.text
-    // button.classList.add('btn')
-  });
-
-// Put event listeners on each button
-answerButtonA.addEventListener("click", function() { checkAnswer("A")});
-  
-// Put the possible answers in the buttons
-
- // if statement to check if the answer matches correct answer
-    // tell if the answer is right or wrong and display it 
-    function checkAnswer(answer) {
-
-    }
-
-// Function
-    // Set the inner Text to be the current question ✅
-    // Phase 2: Fetch one random question from the array of results
-    // Put the other possible answers in the buttons 
-    // if statement to check if the answer matches correct answer
-        // tell if the answer is right or wrong and display it
-    // function that updates the score and displays it        
-    // function for timer 
-    // function for feedback
-
-
-    
-   })
-
-   */
