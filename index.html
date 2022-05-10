@@ -8,34 +8,41 @@
     <title>General Knowledge Quiz</title>
 </head>
 <body>
-    <!--
-        1. Title
-        1.Timer
-        2. Question
-        3. Answer buttons * 4
-        4. Score
-        5. Feedback paragraph
-    -->
-    <header>
-        <h1 id = "title">General Knowledge Quiz</h1>
-    </header>
-    <section id = "top">
-        <h3 id = "subheading">You have five questions to answer</h3>
-        <h3 id = "difficulty">Question number: 1</h3>
-        <h2 id = "question"> </h2>
+    <main>
+        <!--
+            1. Title
+            1.Timer
+            2. Question
+            3. Answer buttons * 4
+            4. Score
+            5. Feedback paragraph
+        -->
+        <header>
+            <h1 id = "title">It's Oscars night...</h1>
+            <p id = "story-text">Integer faucibus dolor ut purus molestie, a lacinia lorem rhoncus. Quisque id augue eu tellus pretium laoreet ac a velit. Vivamus auctor, orci quis malesuada iaculis, eros lorem pharetra tellus, vitae pharetra nisl purus at risus. Quisque ut elit vel enim ornare efficitur. Nulla efficitur sollicitudin metus quis volutpat. Sed enim arcu, vehicula eget felis ut, venenatis imperdiet lorem. Vestibulum condimentum pretium scelerisque. Donec euismod, nulla eget finibus dignissim, arcu elit mattis risus, id cursus dolor nisl cursus ante.</p>
+            <h3 id = "subheading">You have five questions to answer...</h3>
+        </header>        
         
-    </section>
-    <section id = "middle">
-        <button id = "answerA">A</button>
-        <button id = "answerB">B</button>
-        <button id = "answerC">C</button>
-        <button id = "answerD">D</button>
-    </section>
-    <section id = "bottom">
-        <button id = "continue">Next question</button>
-        <p id = "score">Score: </p>
-        <p id ="feedback"></p>
-    </section>
+                        
+            
+            
+        
+        <section id = "middle">
+            <h3 id = "question-number">Question number: 1</h3>
+            <h2 id = "question"> </h2>
+            <div id="button-container">
+                <button id = "answerA" class = "answer-buttons-row-1 answer-buttons">A</button>
+                <button id = "answerB" class = "answer-buttons-row-1 answer-buttons">B</button>
+                <button id = "answerC" class = "answer-buttons-row-2 answer-buttons">C</button>
+                <button id = "answerD" class = "answer-buttons-row-2 answer-buttons">D</button>
+            </div>
+        </section>
+        <section id = "bottom">            
+            <button id = "continue">Next question</button>
+            <p id = "score">Score: </p>
+            <p id ="feedback"></p>
+        </section>
+    </main>
     <script src="app.js"></script>
 </body>
 </html>

@@ -1,4 +1,6 @@
 
+    // Bug when using symbols in answers
+    
     // Getting the elements 
     let question= document.querySelector("#question");
     let title = document.querySelector("#title");
