@@ -8,7 +8,7 @@ As a team of three, we built a movie trivia app using vanilla JS, html and css.
 
 This exercise taught me the importance of fetching data asynchronously and querying the DOM to select and alter HTML elements.
 
-Visit the demo [here]()
+Visit the demo [here](https://alphapentagon.github.io/trivia-quiz-fetch-api-hackathon/)
 
 OR
 
