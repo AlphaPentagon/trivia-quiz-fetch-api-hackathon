@@ -1,61 +1,20 @@
-# Fetch Hackathon
+# Week 2 Hackathon
 
-Today, we will be using our newfound skills to make apps that request data from a server.
+## Movie Trivia Quiz using the Fetch API
 
-## Step 1 - Getting data and brainstorming (20 - 30 mins)
+At the end of our second week on the School of Code bootcamp, we were tasked with creating an app that fetched data from an external api and then allows users to interact with it in a browser using vanilla JS.
 
-Here are some APIs that we can use for free. All but the dad jokes one simply need the url. Each API has documentation on how to ask for different data by changing the url. We have included an example fetch for each one to help you get started.
+As a team of three, we built a movie trivia app using vanilla JS, html and css.
 
-👉 Send a request to each of the APIs below using your browser's address bar to investigate what you get back and check that the APIs are each up and running.
+This exercise taught me the importance of fetching data asynchronously and querying the DOM to select and alter HTML elements.
 
-👉 Try and fetch in your JavaScript and console log until you see the same data you saw in the browser.
+Visit the demo [here]()
 
-👉 Visit the documentation for the APIs and investigate further. 
+OR
 
-👉 From there, brainstorm what you could make with your knowledge of JavaScript, the DOM and the data you have received.
+To run locally:
 
-### Pokemon API
+- Clone this repo
+- Open index.html in your web browser
 
-- [Pokemon API](https://pokeapi.co/)
-
-```js
-// fetch the first pokemon
-fetch("https://pokeapi.co/api/v2/pokemon/1/");
-```
-
-### Trivia API
-
-- [Trivia API](https://opentdb.com/api_config.php)
-
-```js
-// fetch 10 random questions
-fetch("https://opentdb.com/api.php?amount=10");
-```
-
-### Dad Jokes API
-
-- [Dad Jokes API](https://icanhazdadjoke.com/api)
-
-```js
-// fetch a dad joke
-fetch("https://icanhazdadjoke.com/", {
-  headers: { accept: "application/json" },
-});
-```
-
-### Dictionary API
-
-- [Dictionary API](https://dictionaryapi.dev/)
-
-```js
-// fetch the definition of the word "hello" in British English (other languages available in the docs)
-fetch(`https://api.dictionaryapi.dev/api/v2/entries/en_GB/hello`);
-```
-
-## Step 2 - Break down the problem (20 - 30 mins)
-
-Now that you have an understanding of what data you're working with and have come up with an idea of what you could achieve, break down the problem into smaller chunks. Keep breaking the problem down until you can translate your plan into code. You should dream big, break it down, and start small. If your plan turns out to be overly ambitious, then be smart and reign it in. If you've been too conservative, try and push yourself.
-
-## Step 3 - Build (The rest of the day!)
-
-Translate your plan into code, and turn your ideas into reality. Enjoy!
+Credits: Craig Summers, Zainab Abid and Jaden Joel
